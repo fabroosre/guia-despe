@@ -1,0 +1,331 @@
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+  width: 100%;
+  cursor: pointer;
+  /* Sombra más oscura y opaca */
+  box-shadow:
+    0 25px 50px -12px rgba(0, 0, 0, 0.25),
+    0 15px 25px -15px rgba(0, 0, 0, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.cardContainer:hover {
+  transform: translateY(-8px) scale(1.02);
+  /* Pequeño zoom al pasar el mouse */
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+}
+
+.cardContainer:hover .mainImage {
+  transform: scale(1.08);
+  /* Zoom más contenido y suave */
+}
+
+.cardContainer:active {
+  transform: scale(1.04);
+  /* Efecto zoom al hacer click */
+  transition: transform 0.3s ease-out;
+}
+
+.premiumCard {
+  position: relative;
+}
+
+.premiumCard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 215, 0, 0.4);
+  /* Dorado brillante */
+  opacity: 0;
+  z-index: 10;
+  pointer-events: none;
+  transition: opacity 0.4s ease-out;
+}
+
+.premiumCard:active::after {
+  opacity: 1;
+  transition: opacity 0s;
+}
+
+.premiumCard:active {
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.8), 0 20px 30px rgba(0, 0, 0, 0.2);
+  border-color: #ffd700;
+}
+
+.imageWrapper {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: #f5f5f5;
+  position: relative;
+}
+
+.mainImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.1, 0, 0, 1);
+  /* Transición mucho más lenta y suave */
+}
+
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #bbb;
+  font-size: 14px;
+}
+
+.badgeRubro {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #2d333f;
+  padding: 4px 8px;
+  border-radius: 2px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.premiumBadge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: linear-gradient(135deg, #ffd700, #ffa500);
+  color: #000;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 5;
+}
+
+
+.videoBadge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.8);
+  color: #3483fa;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.cardContainer:hover .videoBadge {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.1);
+  background: #fff;
+}
+
+.infoContainer {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2d333f;
+  margin: 0 0 4px 0;
+  line-height: 1.2;
+}
+
+.descripcionCorta {
+  font-size: 14px;
+  color: #6e7072;
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.statusWrapper {
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.statusOpen {
+  color: #008a00;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.statusClosed {
+  color: #d32323;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+.actionWrapper {
+  margin-top: auto;
+}
+
+.linkMapBtn {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid #3483fa;
+  color: #3483fa;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s;
+  background: transparent;
+}
+
+.linkMapBtn:hover {
+  background: #3483fa;
+  color: #fff;
+}
+
+.linkMapBtnDisabled {
+  border-color: #e6e6e6;
+  color: #bbb;
+  cursor: not-allowed;
+}
+
+/* Premium Data Styles for Cards */
+.premiumDataWrapper {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.cardContactList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.cardContactItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #4a4a4a;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.cardContactItem:hover {
+  color: #c19a6b;
+}
+
+.cardSocialGrid {
+  display: flex;
+  gap: 10px;
+}
+
+.cardSocialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #f5f5f5;
+  color: #666;
+  transition: all 0.3s ease;
+}
+
+.cardSocialLink:hover {
+  background: #c19a6b;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.cardSchedule {
+  font-size: 12px;
+  color: #4a4a4a;
+  margin-bottom: 10px;
+}
+
+.cardSchedule strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.scheduleText {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.scheduleDayBadge {
+  background: #f0f0f0;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+}
+
+.miniGallery {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 10px;
+  height: 40px;
+}
+
+.miniGalleryImg {
+  width: calc(33.333% - 3px);
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.cardVideoLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #d32323;
+  text-decoration: none;
+  margin-bottom: 12px;
+  padding: 4px 0;
+}
+
+.cardVideoLink:hover {
+  text-decoration: underline;
+}

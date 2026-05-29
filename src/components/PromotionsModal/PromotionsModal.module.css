@@ -1,0 +1,222 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  padding: 20px;
+  opacity: 0;
+  animation: fadeInOverlay 0.3s ease forwards;
+  backdrop-filter: blur(2px);
+}
+
+.modal {
+  width: min(100%, 1100px);
+  max-height: 90vh;
+  overflow: auto;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafb 100%);
+  border-radius: 32px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0, 0, 0, 0.08);
+  padding: 40px;
+  position: relative;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: slideUpModal 0.35s ease forwards;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f0f2f5 0%, #e8ebf0 100%);
+  color: #1e3338;
+  font-size: 28px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton:hover {
+  background: linear-gradient(135deg, #e0e3e8 0%, #d8dce1 100%);
+  transform: rotate(90deg);
+}
+
+.title {
+  margin: 0 0 12px 0;
+  font-size: 32px;
+  font-weight: 800;
+  color: #0a1428;
+  letter-spacing: -0.5px;
+}
+
+.description {
+  margin: 0 0 32px 0;
+  color: #667085;
+  font-size: 15px;
+  line-height: 1.8;
+  font-weight: 500;
+}
+
+.list {
+  display: grid;
+  gap: 22px;
+}
+
+.promotionCard {
+  display: grid;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%);
+  border: 1px solid #e8eaed;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.promotionCard:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: #d8dce3;
+  transform: translateY(-2px);
+}
+
+.promotionHeader {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.promotionTitleBlock {
+  flex: 1;
+  min-width: 0;
+}
+
+.promotionName {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+  font-weight: 800;
+  color: #0a1428;
+  letter-spacing: -0.3px;
+}
+
+.promotionBusiness {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  color: #1e3338;
+  font-weight: 700;
+  letter-spacing: -0.1px;
+}
+
+.promotionBadge {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #0d6efd 0%, #0959d9 100%);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(13, 110, 253, 0.2);
+  transition: all 0.2s ease;
+}
+
+.promotionImage {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 16px;
+  transition: transform 0.3s ease;
+}
+
+.promotionCard:hover .promotionImage {
+  transform: scale(1.02);
+}
+
+.promotionDescription {
+  margin: 0;
+  color: #4a5568;
+  line-height: 1.8;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.promotionLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #0d6efd 0%, #0959d9 100%);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  width: fit-content;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(13, 110, 253, 0.25);
+}
+
+.promotionLink:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(13, 110, 253, 0.35);
+}
+
+.emptyState,
+.errorState {
+  padding: 24px;
+  text-align: center;
+  border-radius: 18px;
+  background: #f1f5f9;
+  color: #334155;
+}
+
+.spinner {
+  width: 42px;
+  height: 42px;
+  border: 5px solid #e2e8f0;
+  border-top-color: #1f6feb;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 32px auto;
+}
+
+@keyframes fadeInOverlay {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUpModal {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 760px) {
+  .modal {
+    padding: 24px;
+  }
+
+  .promotionImage {
+    height: 180px;
+  }
+}
