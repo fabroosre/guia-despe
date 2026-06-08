@@ -116,8 +116,13 @@ export const LocalDetail: React.FC<LocalDetailProps> = ({ local, onBack }) => {
                         <span className={styles.dayName}>{dia.charAt(0).toUpperCase() + dia.slice(1)}</span>
                         <span className={styles.hours}>
                           {horario?.abierto ? (
-                            horario.apertura && horario.cierre
-                              ? `${horario.apertura} – ${horario.cierre}`
+                          (typeof horario.apertura === 'string' && horario.apertura.includes(' a ')) || 
+                          (typeof horario.cierre === 'string' && horario.cierre.includes(' a '))
+                            ? [horario.apertura, horario.cierre]
+                                .filter(h => typeof h === 'string' && h.includes(' a '))
+                                .join(' / ')
+                            : (horario.apertura && horario.cierre)
+                              ? `${horario.apertura} - ${horario.cierre}`
                               : 'Abierto'
                           ) : 'Cerrado'}
                         </span>
