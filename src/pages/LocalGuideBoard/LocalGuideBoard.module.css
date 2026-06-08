@@ -200,8 +200,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  padding: 100px 24px 60px;
   gap: 40px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   transition: right 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
 }
 
@@ -278,6 +281,25 @@
   transition-delay: 0.7s;
 }
 
+/* Mejoras para modo horizontal o pantallas de poca altura */
+@media (max-height: 500px) {
+  .mobileMenu {
+    gap: 25px;
+    padding: 80px 20px 40px;
+  }
+
+  .mobileLogo {
+    height: 50px;
+  }
+
+  .mobileNav {
+    gap: 15px;
+  }
+
+  .mobileNav a {
+    font-size: 24px;
+  }
+}
 
 
 .heroContent {
@@ -651,6 +673,9 @@
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
   color: #2d333f;
   text-align: center;
+  max-height: 90vh; /* Limita la altura máxima del modal al 90% del viewport */
+  overflow-y: auto; /* Permite el scroll vertical si el contenido excede la altura */
+  box-sizing: border-box; /* Asegura que el padding se incluya en el cálculo de la altura */
 }
 
 .townTitle {
