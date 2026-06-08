@@ -43,11 +43,28 @@ export const LocalGuideBoard: React.FC = () => {
   const [popupsLastSeen, setPopupsLastSeen] = useState<Record<number, string>>({});
 
   useEffect(() => {
+    // Configurar favicon y título de la pestaña
+    const link = (document.querySelector("link[rel*='icon']") || document.createElement('link')) as HTMLLinkElement;
+    link.type = 'image/jpeg';
+    link.rel = 'icon';
+    link.href = 'https://i.ibb.co/KpX42FxH/logo.jpg';
+    document.head.appendChild(link);
+    document.title = "Guía Despeñaderos";
+
     const stored = localStorage.getItem('popupsLastSeen');
     if (stored) {
       try { setPopupsLastSeen(JSON.parse(stored)); } catch (e) { }
     }
   }, []);
+
+  // Bloquear el scroll del fondo cuando el menú móvil está abierto
+  useEffect(() => {
+    if (showMobileMenu) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [showMobileMenu]);
 
   const activePopup = popups.find(p => {
     const lastSeenDate = popupsLastSeen[p.id];
