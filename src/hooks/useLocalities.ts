@@ -29,7 +29,8 @@ export const useLocalities = (): UseLocalitiesReturn => {
         .select('*');
 
       if (error) {
-        throw new Error(error.message);
+        console.error('Error de Supabase:', error);
+        throw new Error(`Error en tabla Guia-Despe: ${error.message}`);
       }
 
       if (!data) {
