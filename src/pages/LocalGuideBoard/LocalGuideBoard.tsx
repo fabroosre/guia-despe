@@ -408,7 +408,7 @@ export const LocalGuideBoard: React.FC = () => {
               <div className={styles.townDivider}></div>
 
               <div className={styles.qrContainer}>
-                <img src="./qr-app.png" alt="QR Code App" className={styles.qrImage} />
+                <img src="/qr-app.png" alt="QR Code App" className={styles.qrImage} />
               </div>
 
               <div className={styles.townFooter}>
